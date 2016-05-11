@@ -78,7 +78,7 @@ describe SendWithUsMailer::MailParams do
 
     it "enqueues the job" do
       subject.merge!(email_id: 'x')
-      assert_enqueued_with(job: MailJob) do
+      assert_enqueued_with(job: SendWithUsMailer::Jobs::MailJob) do
         subject.deliver_later
       end
     end
