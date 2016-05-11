@@ -89,7 +89,7 @@ module SendWithUsMailer
     # In particular, the +api_key+ must be set (following the guidelines in the
     # +send_with_us+ documentation).
     def deliver_later
-      SendWithUsMailer::Jobs::MailJob.perform_later(
+      Jobs::MailJob.perform_later(
           @email_id,
           @to,
           data: @email_data,
