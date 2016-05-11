@@ -80,6 +80,8 @@ module SendWithUsMailer
       ) if @email_id.present?
     end
 
+    alias_method :deliver_now, :deliver
+
     # Invoke <tt>SendWithUs::Api</tt> to deliver the message later via ActiveJob.
     # The <tt>SendWithUs</tt> module is implemented in the +send_with_us+ gem.
     #

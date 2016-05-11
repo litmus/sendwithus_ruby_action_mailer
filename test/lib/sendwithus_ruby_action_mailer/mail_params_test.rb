@@ -65,9 +65,26 @@ describe SendWithUsMailer::MailParams do
       subject.deliver
     end
 
-    it "doesnt call the send_with_us gem if mail method is not called" do
+    it "doesn't call the send_with_us gem if mail method is not called" do
       SendWithUs::Api.any_instance.expects(:send_with).never
       subject.deliver
+    end
+  end
+
+  describe "#deliver_now" do
+    it "method exists" do
+      subject.respond_to?(:deliver_now).must_equal true
+    end
+
+    it "calls the send_with_us gem" do
+      subject.merge!(email_id: 'x')
+      SendWithUs::Api.any_instance.expects(:send_email)
+      subject.deliver_now
+    end
+
+    it "doesn't call the send_with_us gem if mail method is not called" do
+      SendWithUs::Api.any_instance.expects(:send_with).never
+      subject.deliver_now
     end
   end
 
