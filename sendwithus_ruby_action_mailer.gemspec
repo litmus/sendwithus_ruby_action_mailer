@@ -21,9 +21,10 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_runtime_dependency 'send_with_us', '>= 1.9.0'
-  gem.add_development_dependency 'actionpack'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'minitest-colorize'
   gem.add_development_dependency 'mocha'
-  gem.add_development_dependency 'activejob'
+
+  gem.add_runtime_dependency 'actionpack'
+  gem.add_runtime_dependency 'activejob'
 end
