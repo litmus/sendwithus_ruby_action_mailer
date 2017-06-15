@@ -89,12 +89,7 @@ module SendWithUsMailer
     # In particular, the +api_key+ must be set (following the guidelines in the
     # +send_with_us+ documentation).
     def deliver_later(options = {})
-      job_options = {}
-      job_options[:queue] = options[:queue] if options[:queue].present?
-      job_options[:wait] = options[:wait] if options[:wait].present?
-      job_options[:wait_until] = options[:wait_until] if options[:wait_until].present?
-      
-      job = Jobs::MailJob.set(job_options)
+      job = Jobs::MailJob.set options
 
       job.perform_later(
           @email_id,
